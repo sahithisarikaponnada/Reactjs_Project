@@ -41,6 +41,10 @@
   color: #888;
 }
 
+
+
+
+
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -109,6 +113,12 @@ nav a:hover {
   margin-top: 5px;
 }
 
+.success {
+  color: green;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
 .home-container {
   max-width: 600px;
   margin: 50px auto;
@@ -118,12 +128,8 @@ nav a:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 600px) {
-  .form-container, .home-container {
-    margin: 20px;
-    padding: 10px;
-  }
-}
+
+
 /* Header styles */
 .App-header {
   background-color: hsl(207, 28%, 40%);
@@ -171,3 +177,181 @@ body.home-page {
 body.register-page {
   background-color: #e8f5e9; /* Light green for Register page */
 }
+
+/* Example header styling */
+.header {
+  padding: 20px;
+  text-align: center;
+}
+
+/* Example content styling */
+.home-container {
+  padding: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+
+/* Light Theme Styles */
+body.light {
+  background-color: white;
+  color: black;
+}
+
+.home-container.light {
+  background-color: white;
+  color: black;
+}
+
+.App-header.light {
+  background-color: hsl(207, 28%, 40%);
+  color: white;
+}
+
+.App-footer.light {
+  background-color: #585b5b;
+  color: white;
+}
+
+/* Dark Theme Styles */
+body.dark {
+  background-color: black;
+  color: white;
+}
+
+.home-container.dark {
+  background-color: black;
+  color: white;
+}
+
+.App-header.dark {
+  background-color: hsl(207, 28%, 20%);
+  color: white;
+}
+
+.App-footer.dark {
+  background-color: #282c34;
+  color: white;
+}
+
+/* Add any other relevant elements here */
+
+
+/* Styling for Smaller Screens
+@media (max-width: 600px) {
+  .form-container, .home-container {
+    margin: 20px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  body {
+    justify-content: flex-start;
+    padding-top: 20px;
+  }
+
+  .form-container {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .form-group {
+    margin-bottom: 8px;
+  }
+
+  input {
+    padding: 6px;
+  }
+
+  .btn {
+    padding: 6px;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  p {
+    font-size: 0.9em;
+  }
+} */
+
+
+
+/* Media Queries */
+/* @media (max-width: 768px) {
+  .form-container, .home-container {
+    max-width: 90%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .form-group input {
+    padding: 8px;
+  }
+
+  .btn {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-container, .home-container {
+    max-width: 100%;
+    margin: 10px auto;
+    padding: 10px;
+  }
+
+  .form-group input {
+    padding: 6px;
+  }
+
+  .btn {
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  p {
+    font-size: 0.9em;
+  }
+} */
+
+
+
+/*
+
+@media only screen and (max-width:600px){
+  .form-container{
+    background-color: red;
+  }
+}
+
+
+@media only screen and (min-width:601px) and (max-width :800px){
+  .form-container{
+    background-color: cyan;
+  }
+}
+
+@media only screen and (max-width:1300px) and (min-width:801px){
+  .form-container{
+    background-color: teal;
+  }
+}
+
+@media only screen and (max-width:600px){
+  .form-container{
+    background-color: red;
+  }
+}
+*/

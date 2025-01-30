@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 
 const Login = () => {
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
-
-  
+  const [successMessage, setSuccessMessage] = useState('');
 
   const validate = () => {
     const errors = {};
@@ -22,16 +23,26 @@ const Login = () => {
     return errors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
-      // Simulate successful login
-      console.log('Form submitted');
-      // Redirect to home page
-      navigate('/home');
+      try {
+        const response = await axios.post('http://localhost:5000/login', {
+          username: email,
+          password,
+        });
+        // Store the token in local storage
+        localStorage.setItem('token', response.data.data.access_token);
+        setSuccessMessage('Login successful!');
+        setErrors({});
+        // Redirect to home page
+        navigate('/home');
+      } catch (error) {
+        setErrors({ apiError: 'Failed to login. Please try again later.' });
+      }
     }
   };
 
@@ -61,6 +72,8 @@ const Login = () => {
         </div>
         <button type="submit" className="btn">Login</button>
       </form>
+      {successMessage && <p className="success">{successMessage}</p>}
+      {errors.apiError && <p className="error">{errors.apiError}</p>}
       <p>
         Don't have an account? <Link to="/register">Register</Link>
       </p>

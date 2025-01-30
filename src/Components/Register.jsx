@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState({});
-  
+  const [successMessage, setSuccessMessage] = useState('');
+  const navigate = useNavigate();
+
 
   const validate = () => {
     const errors = {};
@@ -26,14 +29,29 @@ const Register = () => {
     return errors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
-    } else {
-      // Proceed with form submission (e.g., API call)
-      console.log('Form submitted');
+      setSuccessMessage(''); // Clear success message if there are validation errors
+    } 
+    else
+     {
+      try {
+        const response = await axios.post('http://localhost:5000/register', {
+          username: email,
+          password,
+        });
+        setSuccessMessage('Registration successful! You can now login.');
+        setErrors({});
+        navigate('/Login');
+      } 
+      catch (error) {
+        setErrors({ apiError: 'Failed to register. Please try again later.' });
+        setSuccessMessage(''); // Clear success message if there is an API error
+
+      }
     }
   };
 
@@ -73,6 +91,8 @@ const Register = () => {
         </div>
         <button type="submit" className="btn">Register</button>
       </form>
+      {successMessage && <p className="success">{successMessage}</p>}
+      {errors.apiError && <p className="error">{errors.apiError}</p>}
       <p>
         Already have an account? <Link to="/login">Login</Link>
       </p>

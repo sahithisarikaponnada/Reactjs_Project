@@ -5,23 +5,29 @@ import Home from './Components/Home.jsx';
 import Login from './Components/Login.jsx';
 import Logout from './Components/Logout.jsx';
 import Register from './Components/Register.jsx';
+import { ThemeProvider } from './Components/Themecontext';  
 import './App.css';
 
 function App() {
+
   return (
-    <Router>
+    <ThemeProvider>
+      <Router>  
         <div>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/" element={<Login />} /> {/* Default route to Login */}
-            <Route path="/logout" element={<Logout />} />
-          </Routes>
-        </div>
-    </Router>
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/" element={<Login />} /> {/* Default route to Login */}
+              <Route path="/logout" element={<Logout />} />
+            </Routes>
+                    </div>
+      </Router>
+     </ThemeProvider>
   );
 }
 
-export default App;
 
+
+
+export default App;
