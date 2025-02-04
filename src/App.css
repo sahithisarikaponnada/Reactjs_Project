@@ -238,6 +238,12 @@ body.dark {
   color: white;
 }
 
+#welcome-text {
+  display: block;
+  visibility: visible;
+  color: black; /* Ensure the text color is not the same as the background */
+}
+
 /* Add any other relevant elements here */
 
 

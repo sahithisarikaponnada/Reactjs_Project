@@ -3,7 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
-const Login = () => {
+const Login = (props) => {
+  // console.log(props.setUser);
+  
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -34,13 +36,16 @@ const Login = () => {
           username: email,
           password,
         });
-        // Store the token in local storage
+     //   props.setUser(email)
+console.log(response.data)
         localStorage.setItem('token', response.data.data.access_token);
         setSuccessMessage('Login successful!');
         setErrors({});
         // Redirect to home page
         navigate('/home');
       } catch (error) {
+        console.log(error);
+        
         setErrors({ apiError: 'Failed to login. Please try again later.' });
       }
     }
