@@ -7,7 +7,8 @@ import Logout from './Components/Logout.jsx';
 import Register from './Components/Register.jsx';
 import { ThemeProvider } from './Components/Themecontext'; 
 import Dashboard from './Components/Dashboard.jsx';
-
+import EmployeeList from './Components/EmployeeList.jsx';
+import EmployeeDetails from './Components/EmployeeDetails.jsx';
 import './App.css';
 
 function App() {
@@ -22,13 +23,17 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/home" element={<Home />} />
-              <Route path="/" element={<Login />} /> {/* Default route to Login */}
+              <Route path="/" element={<Login />} />  {/* Default route to Login */}
               <Route path="/logout" element={<Logout />} />
               <Route path="/Dashboard" element={<Dashboard/>}/>
+              <Route path="/EmployeeList" element={<EmployeeList/>}/>
+              <Route path="/EmployeeDetails/:id" element={<EmployeeDetails/>}/>
+
             </Routes>
         </div>
       </Router>
      </ThemeProvider>
+   
   );
 }
 //suspense wraps component while loading and displays fallback UI

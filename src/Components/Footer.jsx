@@ -1,10 +1,12 @@
-import React from 'react';
+import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="App-footer">
-      <p>&copy; All rights reserved.</p>
-    </footer>
+    <div>
+      <footer className="Emp-footer">
+        <p>&copy; All rights reserved. Zensar Technologies</p>
+      </footer>
+    </div>
   );
 };
 
